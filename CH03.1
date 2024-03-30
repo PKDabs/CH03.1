@@ -1,0 +1,54 @@
+#This is CH03-1 assignment. The purpose of this assignment is to prompt the user to input number of hours worked, hourly rate and output pay amount.
+#If hours worked is over 40 hours, calculate overtime pay (1.5 times of hourly rate).  If hours worked is over 60 hours, calculate double overtime pay (2 times of hourly rate).
+#Also, if the program detects wrong input (entering characters, negative numbers, etc.) the program displays a message informing the user of wrong input.
+
+try:
+
+    hours = float(input('Please enter the amount of hours worked\n'))   #First create try/except rules for hours to seperate errors such as negative or letters.
+
+    if hours <= 0:
+
+        print ('You have entered wrong information for hours.')
+
+except:
+    print ('You have entered wrong information for hours.')
+
+try:
+
+    rates = float(input('Please enter the hourly rate\n'))              #Second thing to do is create try/except rules for rates.
+
+    if rates <= 0:
+
+        print ('You have entered wrong rate information.')
+except:
+    print ('You have entered wrong rate information.')
+
+                                            
+try:                                                                    #Finally, we calculate the the pay total depending on hours and rates.
+    if 0 < hours <= 40:   
+
+        total = hours * rates
+
+        print('Your total is', total)
+
+
+    elif 41 < hours <= 60:
+
+        ohours = hours - 40
+
+        total = (ohours * rates * 1.5) + ((hours - ohours) * rates)
+
+        print ('Your total is', total)
+
+    elif hours > 60:
+
+        ohours = 20
+
+        dhours = hours - 60
+
+        total = (ohours * rates *1.5) + (dhours * rates * 2) + ((hours - ohours - dhours) * rates)
+
+        print('Your total is', total)
+
+except:
+    print('You have entered an invalid input.')
